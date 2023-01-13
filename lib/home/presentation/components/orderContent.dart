@@ -42,26 +42,16 @@ class OrdersContents extends StatelessWidget {
               ),
             ],
           );
-        }
-        else if (state is GetOrdersLoadingState) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: AppColors.primary,
-            ),
-          );
-        }
-        else if(HomeScreenCubit.get(context).Orders.isEmpty)
+        }else if(HomeScreenCubit.get(context).Orders.isEmpty)
         {
           return Center(child: NoDataWidget(AppStrings.noOrders));
         }
-
-       else {
+        else
           return Center(
             child: CircularProgressIndicator(
               color: AppColors.primary,
             ),
           );
-        }
       },
     );
   }

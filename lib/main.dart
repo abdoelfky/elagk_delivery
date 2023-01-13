@@ -11,6 +11,7 @@ import 'package:elagk_delivery/home/presentation/controllers/home_screen_control
 import 'package:elagk_delivery/home/presentation/controllers/order_controller/order_cubit.dart';
 import 'package:elagk_delivery/notification/controller/notification_cubit.dart';
 import 'package:elagk_delivery/shared/bloc_observer.dart';
+import 'package:elagk_delivery/shared/config/noti.dart';
 import 'package:elagk_delivery/shared/local/shared_preference.dart';
 import 'package:elagk_delivery/shared/network/dio_helper.dart';
 import 'package:flutter/foundation.dart';
@@ -31,6 +32,7 @@ Future<void> main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   CacheHelper.init();
+  Noti.initialize(flutterLocalNotificationsPlugin);
 
   // initializeFancyCart(
   //   child: MyApp(),

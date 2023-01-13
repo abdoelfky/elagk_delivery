@@ -165,6 +165,11 @@ class OrderInformationContent extends StatelessWidget {
                               orderId: Order!.orderId!.toInt());
                           OrderCubit.get(context).postOrder(
                               orderId: Order!.orderId!.toInt());
+                          //post notify to client
+                          OrderCubit.get(context).postNotification(UserID:
+                          Order!.userId!, notifiactionTitle: "order Progress",
+                              notifiactionDescription:
+                              "your order Accepted successfully from pharmacy");
                         },
                         mainColor: Colors.green,
                         scoundColor: Colors.green.shade50,

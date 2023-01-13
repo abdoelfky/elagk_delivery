@@ -77,7 +77,6 @@ dependencies:
   permission_handler: ^10.2.0
   location: ^4.4.0
   intl:
-  workmanager:
   flutter_local_notifications:
 
 
@@ -85,7 +84,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_launcher_icons:
+flutter_icons:
+  android: true
+  desktop: true
+  image_path: "assets/images/splash/logo.png"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -111,7 +114,6 @@ flutter:
     - assets/video/
     - assets/json/
     - assets/images/
-    - assets/images/splash/
     - assets/images/login/
     - assets/images/reset password/
     - assets/images/profile/
@@ -121,10 +123,6 @@ flutter:
     - assets/images/order/
     - assets/images/contact_us/
     - assets/images/about_us/
-    - assets/images/onboarding/
-    - assets/images/onboarding/1/
-    - assets/images/onboarding/2/
-    - assets/images/onboarding/3/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -3,12 +3,7 @@ class AppStrings {
   static const String appTitle = "3elagk pharmacy - علاجك لصيدليات";
   static const String isNull = "null";
   static const String nA = "N/A";
-  static const String welcome  = " مرحبا بكم في علاجك";
-  static const String pharmacies="الصيدليات";
-  static const String search  = "ابحث .....";
-  static const String noPharmacies= "لا يوجد صيدليات حتى الآن";
   static const String pleaseCheckYourInternet= "من فضلك تحقق من اتصال الانترنت لديك ثم أعد تحميل الصفحه";
-  static const String pleaseGiveGPSPermission= "من فضلك قم باعطاء التطبيق صلاحيه الوصول الى GPS من اعدادات جهازك";
   static const String thenRestartApp= "ثم اعد تشغيل التطبيق";
 
 // forget password
@@ -75,6 +70,7 @@ class AppStrings {
   static const String resetPassword = "تم تغيير كلمة المرور بنجاح";
   static const String erorrResetPassword = "لم يتم تغيير كلمة المرور بنجاح    ";
   static const String enterValidnum = "يرجي إدخال الكود";
+  static const String enterValidnum1 = "يرجي إدخال الرقم صحيح";
 
   // Make login screen
   static const String pleaseLoginToBrowseApp =
@@ -94,10 +90,6 @@ class AppStrings {
   static const String oldPassword = "كلمة المرور القديمه";
   static const String changePassword = "تغيير كلمه المرور";
 
-  static const String resetPasswordSubtitle =
-      "ادخل كلمة مرور تتكون من 8 أحرف بحد أدني، وتحتوي علي رقم وحرف كبير ورمز واحد عالأقل.";
-  static const String theNewPassword = "كلمة المرور الجديدة";
-  static const String hintPassword = "Aa123456#.*";
 
   // Drawer taps
   static const String homeScreen = "الصفحة الرئيسية";
@@ -106,13 +98,7 @@ class AppStrings {
   static const String contactUs = "تواصل معنا";
   static const String aboutUs = "عن التطبيق";
   static const String orders = "الطلبات";
-  static const String orderDetails = "تفاصيل الطلب";
-  static const String pastOrders = "الطلبات السابقه";
-  static const String offers = "العروض";
-  static const String points = "النقاط";
-  static const String specialCustomers = "العملاء المميزين";
-  static const String elagkStore = "متجر علاجك";
-  static const String confirmOrder = "تأكيد الطلب";
+
 
   // About us
   static const String whoAreWe = "من نحن";
@@ -122,47 +108,8 @@ class AppStrings {
   static const String version = "الاصدار";
   static const String versionNum = "الاصدار الاخير 1.0.0";
 
-  // Add $ update medicines
-  static const String addProduct = "إضافة منتج";
-  static const String editProduct = "تعديل منتج";
-  static const String addingProduct = "إضافة المنتج";
-  static const String editingProduct = "تعديل المنتج";
-  static const String selectItem = "اختر المنتج للإضافة";
-  static const String productName = "اسم المنتج";
-  static const String productDetails = "تفاصيل المنتج";
-  static const String productPrice = "سعر المنتج";
-  static const String productDiscountPercent = "نسبة الخصم";
-  static const String productCategoryName = "الفئة";
-  static const String theQuantity = "الكمية";
-  static const String dose = "الجرعة";
-  static const String productPicture = "إضافة صورة";
-  static const String confirmDeleteProduct = "هل أنت متأكد من حذف المنتج؟";
-  static const String delete = "حذف";
-  static const String searchFor = "ابحث الان عن منتجاتك";
-  static const String searchForPharmacy = "ابحث الآن عن صيدليه";
 
-  // static const String availableQuantity = "الكمية المتاحة";
-  static const String enterValidProductName = "من فضلك ادخل اسم صحيح";
-  static const String enterValidProductDetails =
-      "يرجي ادخال تفاصيل المنتج بشكل صحيح!";
 
-  // static const String enterValidAmount = "من فضلك ادخل كمية صحيحة";
-  static const String enterValidPrice = "من فضلك ادخل سعر صحيح";
-  static const String enterValidDiscountPercent = "من فضلك ادخل نسبة خصم صحيحة";
-  static const String enterValidCategoryName = "من فضلك ادخل فئة صحيحة";
-  static const String enterValidQuantity = "من فضلك ادخل كمية صحيحة";
-  static const String galleryImport = "معرض الصور";
-  static const String cameraImport = "الكاميرا";
-
-  // Complaints screen
-  static const String suggestionsAndComplaints = "مقترحات وشكاوى";
-  static const String complaintTitle = "عنوان الشكوى";
-  static const String complaintDetails = "تفاصيل الشكوى";
-  static const String sendRequest = "ارسال الطلب";
-  static const String enterValidComplaintTitle =
-      "يرجي ادخال عنوان الشكوي بشكل صحيح!";
-  static const String enterValidComplaintDetails =
-      "يرجي ادخال تفاصيل الشكوي بشكل صحيح!";
 
   // Contact us
   static const String address = "العنوان";
@@ -171,22 +118,10 @@ class AppStrings {
   static const String phoneNumber = "رقم الهاتف";
   static const String facebook = "Facebook";
   static const String instagram = "Instagram";
-  static const String whatsappIsNotInstalled = "تطبيق واتساب غير مثبت علي هاتفك!";
 
   // Pharmacy user profile  screen
-  static const String area = "منطقة";
-  static const String deliveryOrderIn30Minutes = "توصيل طلب \n 30 دقيقة";
-  static const String deliveryDistance = "تبعد مسافة كم";
-  static const String edit = "تعديل";
-  static const String cancel = "إلغاء";
   static const String saveChanges = "حفظ التعديلات";
-  static const String medicine = "           ادوية            ";
-  static const String cost = "مستحضرات تجميل";
   static const String editProfile = "تعديل الحساب";
-
-
-  // static const String editProduct = "تعديل المنتج: ";
-  static const String pressToEdit = "إضغط للتعديل";
 
   // All orders screen
   static const String readyToDeliver = "جاهز للتوصيل";
@@ -199,15 +134,10 @@ class AppStrings {
   static const String pharmacyName = "اسم الصيدليه";
   static const String clientName = "اسم العميل";
   static const String clientPhone = "رقم العميل";
-
   static const String ordersInfo = "الطلب رقم";
 
 
   // One order details screen
-  static const String orderNum = "الطلب رقم ";
-  static const String addressIs = "العنوان: ";
-  static const String medicines = "الأدوية";
-  static const String deliverPrice = "سعر التوصيل";
   static const String deliverTo= "التوصيل الى";
 
   // Appbar

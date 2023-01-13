@@ -10,7 +10,6 @@ import 'package:elagk_delivery/drawer/presentation/controller/profile_controller
 import 'package:elagk_delivery/home/presentation/controllers/home_screen_controller/home_screen_cubit.dart';
 import 'package:elagk_delivery/home/presentation/controllers/order_controller/order_cubit.dart';
 import 'package:elagk_delivery/notification/controller/notification_cubit.dart';
-import 'package:elagk_delivery/onboarding/controllers/onboarding_cubit.dart';
 import 'package:elagk_delivery/shared/bloc_observer.dart';
 import 'package:elagk_delivery/shared/local/shared_preference.dart';
 import 'package:elagk_delivery/shared/network/dio_helper.dart';
@@ -18,10 +17,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'shared/global/app_theme.dart';
 import 'shared/utils/app_routes.dart';
 import 'shared/utils/app_strings.dart';
 
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
@@ -57,7 +59,6 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers:
         [
-          BlocProvider(create: (BuildContext context) =>OnboardingCubit()),
           BlocProvider(create: (BuildContext context) =>LoginCubit()),
           BlocProvider(create: (BuildContext context) =>ForgetPasswordCubit()),
           BlocProvider(create: (BuildContext context) =>ResetPasswordCubit()),
@@ -68,9 +69,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>AboutUsCubit()..getAboutUs()),
           BlocProvider(create: (BuildContext context) =>OrderCubit()),
           BlocProvider(create: (BuildContext context) =>NotificationCubit()..getNotifications()),
-          BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..getUserProfileData()..getOrders()),
-
-
+          BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..getNotifications()..checkNotifications()..getUserProfileData()..getOrders()),
 
         ],
         child: MaterialApp(

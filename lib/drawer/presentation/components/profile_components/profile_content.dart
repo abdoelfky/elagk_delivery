@@ -31,8 +31,10 @@ class ProfileContent extends StatelessWidget {
         },
         builder: (context,state)
     {
+      print(ProfileCubit.get(context).userModel!.userPhones!.length);
+
       _phoneController.text =
-      ProfileCubit.get(context).userModel!.userPhones![0];
+      ProfileCubit.get(context).userModel!.userPhones!.last;
       _userNameController.text =
       ProfileCubit.get(context).userModel!.userName!;
       _emailController.text =
@@ -147,7 +149,7 @@ class ProfileContent extends StatelessWidget {
                   obscure: false,
                   validator: (value) {
                     if (value!.length < 11) {
-                      return AppStrings.enterValidnum;
+                      return AppStrings.enterValidnum1;
                     } else {
                       return null;
                     }

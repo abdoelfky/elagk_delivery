@@ -21,6 +21,7 @@ import '../../../shared/utils/app_strings.dart';
 import '../../../shared/utils/app_values.dart';
 import '../../data/models/orders_model.dart';
 import '../controllers/home_screen_controller/home_screen_cubit.dart';
+import 'button2.dart';
 import 'info_content_widget2.dart';
 import 'informations_content_widget.dart';
 import 'orders_components/orderBasketContent.dart';
@@ -94,20 +95,13 @@ class OrderInformationContent extends StatelessWidget {
                     height: 20,
                   ),
                   //pharmacy name
-                  InformationContentSection2(
-                    ontap: (){
-                      ContactUsCubit.get(context).openMap(
-                          Order!.pharmacy!.latitude!.toDouble(),
-                          Order!.pharmacy!.longitude!.toDouble());
-                    },
+                  InformationContentSection(
+
                     text: AppStrings.pharmacyName,
 
                     text1:Order!.pharmacy!.pharmacyName.toString(),
-                    child:   Image.asset(
-                      'assets/images/drawer_icons/phamacy.png',
-                      width: 30,
-                      height: 30,
-                    ),
+                    image: 'assets/images/drawer_icons/phamacy.png',
+
                   ),
                   const SizedBox(
                     height: 20,
@@ -202,12 +196,13 @@ class OrderInformationContent extends StatelessWidget {
                         : (!OrderCubit.get(context)
                         .acceptedModel!
                         .isDelivered!)
-                        ?Center(child:  ScoundButton(
+                        ?Center(child:  Button(
                       onPressed: () {
                         OrderCubit.get(context)
                             .postOrderDeliverDone(orderId:Order!.orderId);
                         OrderCubit.get(context).folowOrders(
                             orderId: Order!.orderId!.toInt());
+                        navigateTo(context: context, screenRoute: Routes.homeDrawer);
                       },
                       mainColor: Colors.green,
                       scoundColor: Colors.green.shade50,

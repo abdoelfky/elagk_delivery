@@ -33,7 +33,34 @@ class LoginScreen extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: true,
-          body: ScreenBackground(
+          body:BlocConsumer<LoginCubit, LoginStates>(
+            listener: (context, state) {
+              if (state is LoginSuccessState) {
+
+                if (state.loginModel.roles![0]
+                    .toString()
+                    .toUpperCase() ==
+                    'DELIVERY') {
+                  showToast(
+                      text: 'Login Successfully',
+                      state: ToastStates.SUCCESS);
+                  navigateFinalTo(
+                      context: context,
+                      screenRoute: Routes.homeDrawer);
+                }else
+                {
+                  showToast(
+                      text: 'This User Can\'t Access' ,
+                      state: ToastStates.ERROR);
+                }
+              } else if (state is LoginErrorState) {
+                showToast(
+                    text: '${state.error}',
+                    state: ToastStates.ERROR);
+              }
+            },
+            builder: (context, state) {
+    return ScreenBackground(
             child: Center(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(AppPadding.p15),
@@ -55,18 +82,26 @@ class LoginScreen extends StatelessWidget {
                         hintColor: AppColors.lightGrey,
                         inputType: TextInputType.emailAddress,
                         textDirection: TextDirection.ltr,
-                        obscure: false,
+
+                        isObsecured:false,
                         validator: (value) => validateEmail(value!),
                       ),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
                       MainTextFormField(
+                        isObsecured:LoginCubit.get(context).isObsecured ,
+                        suffixIcon: IconButton(
+                            color: Colors.white,
+                            icon: LoginCubit.get(context).isObsecured?Icon(Icons.visibility,color: AppColors.primary,):
+                            Icon(Icons.visibility_off,color: AppColors.primary,),
+                            onPressed: (){
+                              LoginCubit.get(context).changeVisibility();
+                            }),
                         controller: _passwordController,
                         label: AppStrings.password,
                         hint: AppStrings.passwordExample,
                         hintColor: AppColors.lightGrey,
                         inputType: TextInputType.visiblePassword,
                         textDirection: TextDirection.ltr,
-                        obscure: true,
                         validator: (value) {
                           if (value!.length < AppSize.s8) {
                             return AppStrings.enterValidPassword;
@@ -98,54 +133,28 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: mediaQueryHeight(context) / AppSize.s80,
                       ),
-                      BlocConsumer<LoginCubit, LoginStates>(
-                        listener: (context, state) {
-                          if (state is LoginSuccessState) {
-
-                            if (state.loginModel.roles![0]
-                                    .toString()
-                                    .toUpperCase() ==
-                                'DELIVERY') {
-                              showToast(
-                                  text: 'Login Successfully',
-                                  state: ToastStates.SUCCESS);
-                              navigateFinalTo(
-                                  context: context,
-                                  screenRoute: Routes.homeDrawer);
-                            }else
-                            {
-                              showToast(
-                                  text: 'This User Can\'t Access' ,
-                                  state: ToastStates.ERROR);
-                            }
-                          } else if (state is LoginErrorState) {
-                            showToast(
-                                text: '${state.error}',
-                                state: ToastStates.ERROR);
-                          }
-                        },
-                        builder: (context, state) {
-                          return ConditionalBuilder(condition:(state is LoginLoadingState),
-                              builder: (context)=>const CircularProgressIndicator(),
-                              fallback: (context)=>MainButton(
-                                title: AppStrings.login,
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    LoginCubit.get(context).userLogin(
-                                        email: _emailController.text.trim(),
-                                        password: _passwordController.text);
-                                  }
-                                },
-                              )
-                          );
-                        },
-                      ),
+                  ConditionalBuilder(condition:(state is LoginLoadingState),
+                    builder: (context)=>const CircularProgressIndicator(),
+                    fallback: (context)=>MainButton(
+                      title: AppStrings.login,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          LoginCubit.get(context).userLogin(
+                              email: _emailController.text.trim(),
+                              password: _passwordController.text);
+                        }
+                      },
+                    )
+                ),
+                      
                     ],
                   ),
                 ),
               ),
             ),
-          ),
+          );
+  },
+),
         ),
       ),
     );

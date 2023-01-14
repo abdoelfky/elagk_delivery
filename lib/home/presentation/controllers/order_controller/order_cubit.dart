@@ -28,38 +28,18 @@ class OrderCubit extends Cubit<OrderState> {
       print(onError.toString());
     });
   }
+  Future<void> postOrderDeliverDone({
+    required orderId}) async {
+    emit(OrderDeliverDoneLoadingState());
+    Dio().patch(
+      ApiConstants.postOrderDeliverDone(orderId),
 
-
-
-  Future<void> postNotification(
-      {
-        required String UserID,
-        required String notifiactionTitle,
-        required  String notifiactionDescription
-      })
-  async {
-    emit(PostNotificationLoadingState());
-    print(UserID);
-    Dio().post('http://freeserver23-001-site1.atempurl.com/api/Notifications',
-        data:{
-          // "notifiactionId": 0,
-          "notifiactionTitle":notifiactionTitle ,
-          "notifiactionDescription":notifiactionDescription,
-          "userId": "${UserID}",
-          "action": "string",
-          "table": "string",
-          "data": "string",
-        }
-    ).then((value)
-    {
-      emit(PostNotificationSuccessState());
-
-    }).catchError((onError)
-    {
+    ).then((value) {
+      emit(OrderDeliverDoneSuccessState());
+    }).catchError((onError) {
+      emit(OrderDeliverDoneErrorState(onError.toString()));
       print(onError.toString());
-      emit(PostNotificationErrorState(onError.toString()));
     });
-
   }
 
 
